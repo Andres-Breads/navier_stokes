@@ -4,48 +4,24 @@ import matplotlib.pyplot as plt
 """
 A es una matriz cuadrada de NxN con la diagonal principal dominante
 B es un vector con los coeficientes independientes en el sistema de ecuaciones de tamaño N
+tolera es un valor de tolerancia de la función y sirve como condición de parada 
 """
-def resolver_gaus_seidel(A, B, iteramax = 20):
-    tolera = 0.0001
-
-    # PROCEDIMIENTO
-    # Gaus-Seidel
-    tamano = np.shape(A)
-    n = tamano[0] # número de filas
-    m = tamano[1] # número de columnas
-
-    X0 = np.zeros(n, dtype = float)
-    # valores iniciales
-    X = np.copy(X0)
-    diferencia = np.ones(n, dtype = float)
-    errado = 2*tolera
-
-    i = 0
-    itera = 0
-
-    while not(errado <= tolera or itera > iteramax):
-        for i in range(0, n, 1):
-            suma = 0
-            for j in range(0, m, 1):
-                if (j != i):
-                    suma = suma + A[i,j]*X[j]
-
-            nuevo = (B[i] - suma)/A[i,i] # Esta sería la forma de obtener el nuevo valor de X[i]
-            diferencia[i] = np.abs(nuevo - X[i]) # Es para calcular el error
-            X[i] = nuevo
-
-        print(f'Iteración {itera}')
-        print(X)
-        test = np.dot(A, X)
-        print(test)
-        errado = np.max(diferencia)
-        itera = itera + 1
-
-    # revisa convergencia
-    if (itera > iteramax):
-        X = 0
-
-    return X
+def conjugate_gradient(A, b, tolera = 1e-5, iteramax = 20):
+    iter = 0
+    n = A.shape[0]
+    x = np.zeros(n)
+    r = b - np.dot(A, x) # El gradiente negativo
+    d = r # Dirección conjugada
+    while np.linalg.norm(r) > tolera and iter <= iteramax:
+        # Alpha controla la velocidad de convergencia
+        alpha = np.divide(np.dot(np.transpose(r), r), np.dot(np.dot(np.transpose(d), A), d))
+        x = x + np.dot(alpha, d)
+        r_new = r - np.dot(np.dot(alpha, A), d)
+        beta = np.divide(np.dot(np.transpose(r_new), r_new), np.dot(np.transpose(r), r))
+        d = r_new + np.dot(beta, d)
+        r = r_new
+        iter = iter + 1
+    return (x, iter)
 
 if __name__ == "__main__":
     # INGRESO
@@ -53,9 +29,11 @@ if __name__ == "__main__":
     B = np.loadtxt('matriz_X_B.txt', skiprows=0)
     C = np.loadtxt('matriz_Y_A.txt', skiprows=0)
     D = np.loadtxt('matriz_Y_B.txt', skiprows=0)
-    X = resolver_gaus_seidel(A, B)
-    Y = resolver_gaus_seidel(C, D)
+    X, itera_x = conjugate_gradient(A, B)
+    Y, itera_y = conjugate_gradient(C, D)
 
+    print(X, itera_x)
+    print(Y, itera_y)
     matriz_n = 8 # Filas
     matriz_m = 11 # columnas
 
