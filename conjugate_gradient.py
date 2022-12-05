@@ -6,7 +6,7 @@ A es una matriz cuadrada de NxN con la diagonal principal dominante
 B es un vector con los coeficientes independientes en el sistema de ecuaciones de tamaño N
 tolera es un valor de tolerancia de la función y sirve como condición de parada 
 """
-def conjugate_gradient(A, b, tolera = 1e-5, iteramax = 20):
+def conjugate_gradient(A, b, tolera = 1e-5, iteramax = 13):
     iter = 0
     n = A.shape[0]
     x = np.zeros(n)
@@ -21,6 +21,7 @@ def conjugate_gradient(A, b, tolera = 1e-5, iteramax = 20):
         d = r_new + np.dot(beta, d)
         r = r_new
         iter = iter + 1
+        print(r)
     return (x, iter)
 
 if __name__ == "__main__":
