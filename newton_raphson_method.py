@@ -14,11 +14,11 @@ def poblar_jacobiano(matriz_jacobiana, X, Y):
             else:
                 new_row.append(column)
         nueva_matriz_jacobiana.append(new_row)
-    return nueva_matriz_jacobiana
+    return np.array(nueva_matriz_jacobiana)
 
 if __name__ == '__main__':
-    X0 = np.zeros(39)
-    Y0 = np.zeros(39)
+    X0 = np.ones(39)
+    Y0 = np.ones(39)
 
     # INGRESO
     matriz_jacobiana = [
@@ -26,6 +26,7 @@ if __name__ == '__main__':
     ]
 
     jacobiano_poblado = poblar_jacobiano(matriz_jacobiana, X0, Y0)
+    # jacobiano_inverso = np.linalg.inv(jacobiano_poblado)
     print(jacobiano_poblado)
 
 ''' 
