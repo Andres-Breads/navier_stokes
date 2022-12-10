@@ -324,14 +324,203 @@ if __name__ == '__main__':
         matriz_jacobiana_y.append(list_of_zeros)
 
     # INGRESO
-    matriz_jacobiana_y[0][0] = lambda W,U: (W[1]-1)/2 +4
-    matriz_jacobiana_y[0][1] = lambda W,U: W[0]/2 -1
-    matriz_jacobiana_y[0][6] = lambda W,U: U[0]/2 -1
+    matriz_jacobiana_y[0][0] = lambda W,U: (U[6])/2 +4
+    matriz_jacobiana_y[0][1] = lambda W,U: (W[0])/2 -1
+    matriz_jacobiana_y[0][6] = lambda W,U: (U[0])/2 -1
     
     matriz_jacobiana_y[1][0] = lambda W,U: (-W[1])/2 -1
-    matriz_jacobiana_y[1][1] = lambda W,U: (W[2]-W[0])/2 +4
+    matriz_jacobiana_y[1][1] = lambda W,U: (U[7])/2 +4
     matriz_jacobiana_y[1][2] = lambda W,U: (W[1])/2 -1
     matriz_jacobiana_y[1][7] = lambda W,U: (U[1])/2 -1
+
+    matriz_jacobiana_y[2][1] = lambda W,U: (-W[2])/2 -1
+    matriz_jacobiana_y[2][2] = lambda W,U: (U[8])/2 +4
+    matriz_jacobiana_y[2][3] = lambda W,U: (W[2])/2 -1
+    matriz_jacobiana_y[2][8] = lambda W,U: (U[2])/2 -1
+
+    matriz_jacobiana_y[3][2] = lambda W,U: (-W[3])/2 -1
+    matriz_jacobiana_y[3][3] = lambda W,U: (U[9])/2 +4
+    matriz_jacobiana_y[3][4] = lambda W,U: (W[3])/2 -1
+    matriz_jacobiana_y[3][9] = lambda W,U: (U[3])/2 -1
+
+    matriz_jacobiana_y[4][3] = lambda W,U: (-W[4])/2 -1
+    matriz_jacobiana_y[4][4] = lambda W,U: (U[10])/2 +4
+    matriz_jacobiana_y[4][5] = lambda W,U: (W[4])/2 -1
+    matriz_jacobiana_y[4][10] = lambda W,U: (U[4])/2 -1
+
+    matriz_jacobiana_y[5][4] = lambda W, U: (-W[5]) / 2 - 1
+    matriz_jacobiana_y[5][5] = lambda W, U: (U[11]) / 2 + 4
+    matriz_jacobiana_y[5][11] = lambda W, U: (U[6]) / 2 - 1
+
+    matriz_jacobiana_y[6][0] = lambda W, U: (-U[6]) / 2 - 1
+    matriz_jacobiana_y[6][6] = lambda W, U: (U[12]-U[0]) / 2 + 4
+    matriz_jacobiana_y[6][7] = lambda W, U: (W[6]) / 2 - 1
+    matriz_jacobiana_y[6][12] = lambda W, U: (U[6]) / 2 - 1
+
+    matriz_jacobiana_y[7][1] = lambda W, U: (-U[7]) / 2 - 1
+    matriz_jacobiana_y[7][6] = lambda W, U: (-W[7]) / 2 - 1
+    matriz_jacobiana_y[7][7] = lambda W, U: (U[13]-U[1]) / 2 + 4
+    matriz_jacobiana_y[7][8] = lambda W, U: (W[7]) / 2 - 1
+    matriz_jacobiana_y[7][13] = lambda W,U: (U[7]) / 2 - 1
+
+    matriz_jacobiana_y[8][2] = lambda W, U: (-U[8]) / 2 - 1
+    matriz_jacobiana_y[8][7] = lambda W, U: (-W[8]) / 2 - 1
+    matriz_jacobiana_y[8][8] = lambda W, U: (U[14]-U[2]) / 2 + 4
+    matriz_jacobiana_y[8][9] = lambda W, U: (W[8]) / 2 - 1
+    matriz_jacobiana_y[8][14] = lambda W, U: (U[8]) / 2 - 1
+
+    matriz_jacobiana_y[9][3] = lambda W, U: (-U[9]) / 2 - 1
+    matriz_jacobiana_y[9][8] = lambda W, U: (-W[9]) / 2 - 1
+    matriz_jacobiana_y[9][9] = lambda W, U: (U[15]-U[3]) / 2 + 4
+    matriz_jacobiana_y[9][10] = lambda W, U: (W[9]) / 2 - 1
+    matriz_jacobiana_y[9][15] = lambda W, U: (U[9]) / 2 - 1
+
+    matriz_jacobiana_y[10][4] = lambda W, U: (-U[10]) / 2 - 1
+    matriz_jacobiana_y[10][9] = lambda W, U: (-W[10]) / 2 - 1
+    matriz_jacobiana_y[10][10] = lambda W, U: (U[16]-U[4]) / 2 + 4
+    matriz_jacobiana_y[10][11] = lambda W, U: (W[10]) / 2 - 1
+    matriz_jacobiana_y[10][16] = lambda W, U: (U[10]) / 2 - 1
+
+    matriz_jacobiana_y[11][5] = lambda W, U: (-U[11]) / 2 - 1
+    matriz_jacobiana_y[11][10] = lambda W, U: (-W[11]) / 2 - 1
+    matriz_jacobiana_y[11][11] = lambda W, U: (U[17]-U[5]) / 2 + 4
+    matriz_jacobiana_y[11][17] = lambda W, U: (U[11]) / 2 - 1
+
+    matriz_jacobiana_y[12][6] = lambda W, U: (-U[12]) / 2 - 1
+    matriz_jacobiana_y[12][12] = lambda W, U: (U[21]-U[6]) / 2 + 4
+    matriz_jacobiana_y[12][13] = lambda W, U: (W[12]) / 2 - 1
+    matriz_jacobiana_y[12][21] = lambda W, U: (U[12]) / 2 - 1
+
+    matriz_jacobiana_y[13][7] = lambda W, U: (-U[13]) / 2 - 1
+    matriz_jacobiana_y[13][12] = lambda W, U: (-W[13]) / 2 - 1
+    matriz_jacobiana_y[13][13] = lambda W, U: (U[22]-U[7]) / 2 + 4
+    matriz_jacobiana_y[13][14] = lambda W, U: (W[13]) / 2 - 1
+    matriz_jacobiana_y[13][22] = lambda W, U: (U[13]) / 2 - 1
+
+    matriz_jacobiana_y[14][8] = lambda W, U: (-U[14]) / 2 - 1
+    matriz_jacobiana_y[14][13] = lambda W, U: (-W[14]) / 2 - 1
+    matriz_jacobiana_y[14][14] = lambda W, U: (U[23]-U[8]) / 2 + 4
+    matriz_jacobiana_y[14][15] = lambda W, U: (W[14]) / 2 - 1
+    matriz_jacobiana_y[14][23] = lambda W, U: (U[14]) / 2 - 1
+
+    matriz_jacobiana_y[15][9] = lambda W, U: (-U[15]) / 2 - 1
+    matriz_jacobiana_y[15][14] = lambda W, U: (-W[15]) / 2 - 1
+    matriz_jacobiana_y[15][15] = lambda W, U: (-U[9]) / 2 + 4
+    matriz_jacobiana_y[15][16] = lambda W, U: (W[15]) / 2 - 1
+
+    matriz_jacobiana_y[16][10] = lambda W, U: (-U[16]) / 2 - 1
+    matriz_jacobiana_y[16][15] = lambda W, U: (-W[16]) / 2 - 1
+    matriz_jacobiana_y[16][16] = lambda W, U: (-U[10]) / 2 + 4
+    matriz_jacobiana_y[16][17] = lambda W, U: (W[16]) / 2 - 1
+
+    matriz_jacobiana_y[17][11] = lambda W, U: (-U[17]) / 2 - 1
+    matriz_jacobiana_y[17][16] = lambda W, U: (-W[17]) / 2 - 1
+    matriz_jacobiana_y[17][17] = lambda W, U: (-U[11]) / 2 + 4
+    matriz_jacobiana_y[17][18] = lambda W, U: (W[17]) / 2 - 1
+
+    matriz_jacobiana_y[18][17] = lambda W, U: (-U[19]) / 2 - 1
+    matriz_jacobiana_y[18][18] = lambda W, U: (U[24]) / 2 + 4
+    matriz_jacobiana_y[18][19] = lambda W, U: (W[18]) / 2 - 1
+    matriz_jacobiana_y[18][24] = lambda W, U: (U[18]) / 2 - 1
+
+    matriz_jacobiana_y[19][18] = lambda W, U: (-W[19]) / 2 - 1
+    matriz_jacobiana_y[19][19] = lambda W, U: (U[25]) / 2 + 4
+    matriz_jacobiana_y[19][20] = lambda W, U: (W[19]) / 2 - 1
+    matriz_jacobiana_y[19][25] = lambda W, U: (U[19]) / 2 - 1
+
+    matriz_jacobiana_y[20][19] = lambda W, U: (-W[21]) / 2 - 1
+    matriz_jacobiana_y[20][20] = lambda W, U: (U[26]) / 2 + 4
+    matriz_jacobiana_y[20][26] = lambda W, U: (U[20]) / 2 - 1
+
+    matriz_jacobiana_y[21][12] = lambda W, U: (-U[21]) / 2 - 1
+    matriz_jacobiana_y[21][21] = lambda W, U: (U[27]-U[12]) / 2 + 4
+    matriz_jacobiana_y[21][22] = lambda W, U: (W[21]) / 2 - 1
+    matriz_jacobiana_y[21][27] = lambda W, U: (U[21]) / 2 - 1
+
+    matriz_jacobiana_y[22][13] = lambda W, U: (-U[22]) / 2 - 1
+    matriz_jacobiana_y[22][21] = lambda W, U: (-W[22]) / 2 - 1
+    matriz_jacobiana_y[22][22] = lambda W, U: (U[28]-U[13]) / 2 + 4
+    matriz_jacobiana_y[22][23] = lambda W, U: (W[22]) / 2 - 1
+    matriz_jacobiana_y[22][28] = lambda W, U: (U[22]) / 2 - 1
+
+    matriz_jacobiana_y[23][14] = lambda W, U: (-U[23]) / 2 - 1
+    matriz_jacobiana_y[23][22] = lambda W, U: (-W[23]) / 2 - 1
+    matriz_jacobiana_y[23][23] = lambda W, U: (U[29]-U[14]) / 2 + 4
+    matriz_jacobiana_y[23][29] = lambda W, U: (U[23]) / 2 - 1
+
+    matriz_jacobiana_y[24][18] = lambda W, U: (-U[24]) / 2 - 1
+    matriz_jacobiana_y[24][24] = lambda W, U: (U[30]-U[18]) / 2 + 4
+    matriz_jacobiana_y[24][25] = lambda W, U: (W[24]) / 2 - 1
+    matriz_jacobiana_y[24][30] = lambda W, U: (U[24]) / 2 - 1
+
+    matriz_jacobiana_y[25][19] = lambda W, U: (-U[25]) / 2 - 1
+    matriz_jacobiana_y[25][24] = lambda W, U: (-W[26]) / 2 - 1
+    matriz_jacobiana_y[25][25] = lambda W, U: (U[31]-U[19]) / 2 + 4
+    matriz_jacobiana_y[25][26] = lambda W, U: (W[25]) / 2 - 1
+    matriz_jacobiana_y[25][31] = lambda W, U: (U[25]) / 2 - 1
+
+    matriz_jacobiana_y[26][20] = lambda W, U: (-U[26]) / 2 - 1
+    matriz_jacobiana_y[26][25] = lambda W, U: (-W[26]) / 2 - 1
+    matriz_jacobiana_y[26][26] = lambda W, U: (U[33]-U[20]) / 2 + 4
+    matriz_jacobiana_y[26][32] = lambda W, U: (U[26]) / 2 - 1
+
+    matriz_jacobiana_y[27][21] = lambda W, U: (-U[27]) / 2 - 1
+    matriz_jacobiana_y[27][27] = lambda W, U: (U[33]-U[21]) / 2 + 4
+    matriz_jacobiana_y[27][28] = lambda W, U: (W[27]) / 2 - 1
+    matriz_jacobiana_y[27][33] = lambda W, U: (U[27]) / 2 - 1
+
+    matriz_jacobiana_y[28][22] = lambda W, U: (-U[28]) / 2 - 1
+    matriz_jacobiana_y[28][27] = lambda W, U: (-W[28]) / 2 - 1
+    matriz_jacobiana_y[28][28] = lambda W, U: (U[34] -U[22]) / 2 + 4
+    matriz_jacobiana_y[28][29] = lambda W, U: (W[28]) / 2 - 1
+    matriz_jacobiana_y[28][34] = lambda W, U: (U[28]) / 2 - 1
+
+    matriz_jacobiana_y[29][23] = lambda W, U: (-U[29]) / 2 - 1
+    matriz_jacobiana_y[29][28] = lambda W, U: (-W[29]) / 2 - 1
+    matriz_jacobiana_y[29][29] = lambda W, U: (U[35] - U[23]) / 2 + 4
+    matriz_jacobiana_y[29][35] = lambda W, U: (U[29]) / 2 - 1
+
+    matriz_jacobiana_y[30][24] = lambda W, U: (-U[30]) / 2 - 1
+    matriz_jacobiana_y[30][30] = lambda W, U: (U[36]-U[24]) / 2 + 4
+    matriz_jacobiana_y[30][31] = lambda W, U: (W[30]) / 2 - 1
+    matriz_jacobiana_y[30][36] = lambda W, U: (U[30]) / 2 - 1
+
+    matriz_jacobiana_y[31][25] = lambda W, U: (-U[31]) / 2 - 1
+    matriz_jacobiana_y[31][30] = lambda W, U: (-W[31]) / 2 - 1
+    matriz_jacobiana_y[31][31] = lambda W, U: (U[37]- U[25]) / 2 + 4
+    matriz_jacobiana_y[31][32] = lambda W, U: (W[31]) / 2 - 1
+    matriz_jacobiana_y[31][37] = lambda W, U: (U[31]) / 2 - 1
+
+    matriz_jacobiana_y[32][26] = lambda W, U: (-U[32]) / 2 - 1
+    matriz_jacobiana_y[32][31] = lambda W, U: (-W[32]) / 2 - 1
+    matriz_jacobiana_y[32][32] = lambda W, U: (U[38] - U[26]) / 2 + 4
+    matriz_jacobiana_y[32][38] = lambda W, U: (U[32]) / 2 - 1
+
+    matriz_jacobiana_y[33][27] = lambda W, U: (-U[33]) / 2 - 1
+    matriz_jacobiana_y[33][33] = lambda W, U: (-U[27]) / 2 + 4
+    matriz_jacobiana_y[33][34] = lambda W, U: (W[33]) / 2 - 1
+
+    matriz_jacobiana_y[34][28] = lambda W, U: (-U[34]) / 2 - 1
+    matriz_jacobiana_y[34][33] = lambda W, U: (-W[34]) / 2 - 1
+    matriz_jacobiana_y[34][34] = lambda W, U: (-U[28]) / 2 + 4
+    matriz_jacobiana_y[34][35] = lambda W, U: (W[34]) / 2 - 1
+
+    matriz_jacobiana_y[35][29] = lambda W, U: (-U[35]) / 2 - 1
+    matriz_jacobiana_y[35][34] = lambda W, U: (-W[35]) / 2 - 1
+    matriz_jacobiana_y[35][35] = lambda W, U: (U[29]) / 2 + 4
+
+    matriz_jacobiana_y[36][30] = lambda W, U: (-U[36]) / 2 - 1
+    matriz_jacobiana_y[36][36] = lambda W, U: (-U[30]) / 2 + 4
+    matriz_jacobiana_y[36][37] = lambda W, U: (W[36]) / 2 - 1
+
+    matriz_jacobiana_y[37][31] = lambda W, U: (-U[37]) / 2 - 1
+    matriz_jacobiana_y[37][36] = lambda W, U: (-W[37]) / 2 - 1
+    matriz_jacobiana_y[37][37] = lambda W, U: (-U[31]) / 2 + 4
+    matriz_jacobiana_y[37][38] = lambda W, U: (W[37]) / 2 - 1
+
+    matriz_jacobiana_y[38][32] = lambda W, U: (-U[38]) / 2 - 1
+    matriz_jacobiana_y[38][37] = lambda W, U: (-W[38]) / 2 - 1
+    matriz_jacobiana_y[38][38] = lambda W, U: (-U[32]) / 2 + 4
 
 ''' 
 fx = lambda x: x**3 + 4*(x**2) - 10
