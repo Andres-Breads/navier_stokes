@@ -310,13 +310,6 @@ if __name__ == '__main__':
     matriz_jacobiana_x[38][37] = lambda W,U: (-W[38])/2 -1
     matriz_jacobiana_x[38][38] = lambda W,U: (-W[37])/2 +4
     
-    X0 = np.ones(39)
-    Y0 = np.ones(39)
-    funciones_pobladas_x = poblar_funciones(matriz_funciones_x, X0, Y0)
-    jacobiano_poblado = poblar_jacobiano(matriz_jacobiana_x, X0, Y0)
-    # jacobiano_inverso = np.linalg.inv(jacobiano_poblado)
-    print(jacobiano_poblado)
-
     # Solución para dirección en Y
     matriz_jacobiana_y = list()
     for item in range(39):
@@ -521,6 +514,31 @@ if __name__ == '__main__':
     matriz_jacobiana_y[38][32] = lambda W, U: (-U[38]) / 2 - 1
     matriz_jacobiana_y[38][37] = lambda W, U: (-W[38]) / 2 - 1
     matriz_jacobiana_y[38][38] = lambda W, U: (-U[32]) / 2 + 4
+
+    tolera = 0.0001
+    diferencia = np.ones(39, dtype = float)
+    errado = 2*tolera
+    iter = 0
+    iteramax = 13
+
+    X0 = np.ones(39)
+    Y0 = np.ones(39)
+
+    while np.linalg.norm(X0) > tolera and np.linalg.norm(Y0) > tolera and iter <= iteramax:
+        funciones_pobladas_x = poblar_funciones(matriz_funciones_x, X0, Y0)
+        jacobiano_poblado_x = poblar_jacobiano(matriz_jacobiana_x, X0, Y0)
+        jacobiano_inverso_x = np.linalg.inv(jacobiano_poblado_x)
+
+        funciones_pobladas_y = poblar_funciones(matriz_funciones_y, X0, Y0)
+        jacobiano_poblado_y = poblar_jacobiano(matriz_jacobiana_y, X0, Y0)
+        jacobiano_inverso_y = np.linalg.inv(jacobiano_poblado_y)
+
+        X0 = X0 - np.dot(jacobiano_inverso_x, funciones_pobladas_x)
+        Y0 = Y0 - np.dot(jacobiano_inverso_y, funciones_pobladas_y)
+        iter = iter + 1
+        print(X0)
+        print(Y0)
+
 
 ''' 
 fx = lambda x: x**3 + 4*(x**2) - 10
