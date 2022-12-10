@@ -17,14 +17,23 @@ def poblar_jacobiano(matriz_jacobiana, X, Y):
     return np.array(nueva_matriz_jacobiana)
 
 if __name__ == '__main__':
-    X0 = np.ones(39)
-    Y0 = np.ones(39)
+    matriz_jacobiana = list()
+    for item in range(39):
+        list_of_zeros = list(0 for i in range(39))
+        matriz_jacobiana.append(list_of_zeros)
 
     # INGRESO
-    matriz_jacobiana = [
-        [lambda X, Y: (X[2]-1)/2 + 4, lambda X, Y: X[1]/2 - 1, 0, 0, 0, 0, lambda X, Y: Y[1]/2 - 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    ]
-
+    matriz_jacobiana[0][0] = lambda W,U: (W[1]-1)/2 +4
+    matriz_jacobiana[0][1] = lambda W,U: W[0]/2 -1
+    matriz_jacobiana[0][6] = lambda W,U: U[0]/2 -1
+    
+    matriz_jacobiana[1][0] = lambda W,U: (-W[1])/2 -1
+    matriz_jacobiana[1][1] = lambda W,U: (W[2]-W[0])/2 +4
+    matriz_jacobiana[1][2] = lambda W,U: (W[1])/2 -1
+    matriz_jacobiana[1][7] = lambda W,U: (U[1])/2 -1
+    
+    X0 = np.ones(39)
+    Y0 = np.ones(39)
     jacobiano_poblado = poblar_jacobiano(matriz_jacobiana, X0, Y0)
     # jacobiano_inverso = np.linalg.inv(jacobiano_poblado)
     print(jacobiano_poblado)
