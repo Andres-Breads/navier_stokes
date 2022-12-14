@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 ''' 
 Función que recibe una matriz jacobiana con las derivadas parciales y un conjunto de valores iniciales X, Y
@@ -542,6 +543,23 @@ if __name__ == '__main__':
         print(X0)
         print(Y0)
         print('---------------------')
+    
+    Solucion = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, X0[0], X0[1], X0[2], X0[3], X0[4], X0[5], 0, 0, 0, 0],
+        [1, X0[6], X0[7], X0[8], X0[9], X0[10], X0[11], 0, 0, 0, 0],
+        [1, X0[12], X0[13], X0[14], X0[15], X0[16], X0[17], X0[18], X0[19], X0[20], 0],
+        [1, X0[21], X0[22], X0[23], 0, 0, 0, X0[24], X0[25], X0[26], 0],
+        [1, X0[27], X0[28], X0[29], 0, 0, 0, X0[30], X0[31], X0[32], 0],
+        [1, X0[33], X0[34], X0[35], 0, 0, 0, X0[36], X0[37], X0[38], 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ]
+
+    #plt.figure()
+    plt.imshow(Solucion)
+    plt.title( "2-D Heat Map" )
+    plt.colorbar()
+    plt.show()
 
 
 ''' 
